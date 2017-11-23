@@ -60,7 +60,8 @@ public class Main extends javax.swing.JFrame {
         );
     }
        
-    private void finalizarBotonActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void finalizarBotonActionPerformed(java.awt.event.ActionEvent evt) {  
+        jScrollPane2.setVisible(false);
          //Abrir arquivo e escrever nele :
          File file = new File("relatorio.txt");
          String motivo = motivoAtraso.getText();
@@ -128,7 +129,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(labelHoradeChegada)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(horaDeChegada, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 184, Short.MAX_VALUE)))
+                        .addGap(0, 201, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -155,13 +156,17 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void finalizarBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarBottonActionPerformed
+           //jInternalFrame1.dispose();
+           jInternalFrame1.setVisible(false);
            int horaChegada =  Integer.parseInt(horaDeChegada.getText());
            String imprev = imprevistos.getText();
         try {
@@ -173,6 +178,7 @@ public class Main extends javax.swing.JFrame {
             if (horaChegada > horaEsperada){
                System.out.println("entro");
                initComponents2();
+               jScrollPane2.setVisible(true);
             }
             
         } catch (Exception ex) {
