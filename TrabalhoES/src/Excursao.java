@@ -92,8 +92,4 @@ class Excursao {
         this.vagasDisp=disp;
     }
   
-    
-  
-
-    
 }
