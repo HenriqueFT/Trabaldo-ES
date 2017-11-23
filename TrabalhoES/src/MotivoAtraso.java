@@ -1,5 +1,7 @@
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -79,11 +81,16 @@ public class MotivoAtraso extends javax.swing.JPanel {
          //Abrir arquivo e escrever nele :
          File file = new File("relatorio.txt");
          String motivo = motivoAtraso.getText();
-         BufferedReader buff= new BufferedReader(new FileReader(file));
+        try {
+            BufferedReader buff= new BufferedReader(new FileReader(file));
+            int horaChegada = Integer.parseInt(buff.readLine());
+            String imprevistos = buff.readLine();
+            Relatorio relatorio = new Relatorio(horaChegada,imprevistos,motivo);
+        } catch (Exception ex) {
+            Logger.getLogger(MotivoAtraso.class.getName()).log(Level.SEVERE, null, ex);
+        }
          //Pega da primeira e segunda linha do arquivo a hora de chegada e imprevistos
-         int horaChegada;
-         String imprevistos;
-         Relatorio relatorio = Relatorio (horaChegada,imprevistos,motivo);
+        
     }//GEN-LAST:event_finalizarBotonActionPerformed
 
 

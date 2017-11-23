@@ -98,20 +98,18 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void finalizarBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarBottonActionPerformed
-           String imprev = imprevistos.getText();
            int horaChegada =  Integer.parseInt(horaDeChegada.getText());
-           //escrever no arquivo hora de chegada e imprevistos
-           File file = new File("excursao.txt");
-           Excursao exc;
+           String imprev = imprevistos.getText();
+           Relatorio relatorio = new Relatorio(horaChegada,imprev);
         try {
-            exc = new Excursao(file,0);
+            File file = new File("excursao.txt");
+            Excursao exc = new Excursao(file,1);
             int horaEsperada = exc.getChegada();
-             if (horaChegada > horaEsperada){
+            if (horaChegada > horaEsperada){
                new MotivoAtraso().setVisible(true);
-               
-             }
+            }
             
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
            
