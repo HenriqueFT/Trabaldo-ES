@@ -3,12 +3,12 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Main extends javax.swing.JFrame {
+public class FazerRelatorio extends javax.swing.JFrame {
 
     /**
      * Creates new form FinalizarExcursao
      */
-    public Main() {
+    public FazerRelatorio() {
         initComponents();
     }
       
@@ -71,7 +71,7 @@ public class Main extends javax.swing.JFrame {
             String imprevistos = buff.readLine();
             Relatorio relatorio = new Relatorio(horaChegada,imprevistos,motivo);
         } catch (Exception ex) {
-            Logger.getLogger(MotivoAtraso.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
          //Pega da primeira e segunda linha do arquivo a hora de chegada e imprevistos
         
@@ -145,7 +145,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(finalizarBotton)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,7 +182,7 @@ public class Main extends javax.swing.JFrame {
             }
             
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FazerRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
            
     }//GEN-LAST:event_finalizarBottonActionPerformed
@@ -204,21 +204,23 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FazerRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FazerRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FazerRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FazerRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new FazerRelatorio().setVisible(true);
             }
         });
     }
