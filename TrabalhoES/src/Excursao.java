@@ -36,11 +36,10 @@ class Excursao {
                     this.vagasDisp=Integer.parseInt(buff.readLine());
                 }
             else{
-            for (int j = 0; j < 8; j++) {
-                String bin=buff.readLine();   
+                for (int j = 0; j < 8; j++) {
+                    String bin=buff.readLine();   
+                }
             }
-            }
-            
         }
         buff.close();
     }
@@ -92,6 +91,9 @@ class Excursao {
     public void setDisp(int disp){
         this.vagasDisp=disp;
     }
+  
+    
+  
 
     
 }

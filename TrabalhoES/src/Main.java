@@ -11,7 +11,71 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
     }
+      
+       private void initComponents2() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        motivoAtraso = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        finalizarBoton = new javax.swing.JButton();
+
+        motivoAtraso.setColumns(20);
+        motivoAtraso.setRows(5);
+        jScrollPane2.setViewportView(motivoAtraso);
+
+        jLabel1.setText("Motivos do Atraso :");
+
+        finalizarBoton.setText("Finalizar");
+        finalizarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalizarBotonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(finalizarBoton))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(finalizarBoton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+    }
+       
+    private void finalizarBotonActionPerformed(java.awt.event.ActionEvent evt) {                                               
+         //Abrir arquivo e escrever nele :
+         File file = new File("relatorio.txt");
+         String motivo = motivoAtraso.getText();
+        try {
+            BufferedReader buff= new BufferedReader(new FileReader(file));
+            int horaChegada = Integer.parseInt(buff.readLine());
+            String imprevistos = buff.readLine();
+            Relatorio relatorio = new Relatorio(horaChegada,imprevistos,motivo);
+        } catch (Exception ex) {
+            Logger.getLogger(MotivoAtraso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         //Pega da primeira e segunda linha do arquivo a hora de chegada e imprevistos
+        
+    }            
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,13 +164,15 @@ public class Main extends javax.swing.JFrame {
     private void finalizarBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarBottonActionPerformed
            int horaChegada =  Integer.parseInt(horaDeChegada.getText());
            String imprev = imprevistos.getText();
-           Relatorio relatorio = new Relatorio(horaChegada,imprev);
         try {
+            Relatorio relatorio = new Relatorio(horaChegada,imprev);
             File file = new File("excursao.txt");
             Excursao exc = new Excursao(file,1);
             int horaEsperada = exc.getChegada();
+            System.out.println(horaEsperada);
             if (horaChegada > horaEsperada){
-               new MotivoAtraso().setVisible(true);
+               System.out.println("entro");
+               initComponents2();
             }
             
         } catch (Exception ex) {
@@ -159,4 +225,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelImprevistos;
     // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton finalizarBoton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea motivoAtraso;
+    // End of variables declaration  
 }
