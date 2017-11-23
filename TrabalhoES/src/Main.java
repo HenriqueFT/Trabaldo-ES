@@ -1,5 +1,7 @@
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends javax.swing.JFrame {
 
@@ -100,15 +102,18 @@ public class Main extends javax.swing.JFrame {
            int horaChegada =  Integer.parseInt(horaDeChegada.getText());
            //escrever no arquivo hora de chegada e imprevistos
            File file = new File("excursao.txt");
-           
-           
-           //Ler do arquivo
-           String respArq = "";
-           int horaEsperada =  Integer.parseInt(respArq);
-           if (horaChegada > horaEsperada){
+           Excursao exc;
+        try {
+            exc = new Excursao(file,0);
+            int horaEsperada = exc.getChegada();
+             if (horaChegada > horaEsperada){
                new MotivoAtraso().setVisible(true);
                
-           }
+             }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
            
     }//GEN-LAST:event_finalizarBottonActionPerformed
 
